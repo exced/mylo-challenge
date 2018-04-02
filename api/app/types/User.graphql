@@ -1,0 +1,30 @@
+type User {
+  id: ObjectID!
+  username: String
+  age: Int
+  category: String
+  priority: Int
+  roles: [UserRole]
+  createdAt: Float
+  updatedAt: Float
+}
+
+type Query {
+  users(offset: Int, limit: Int): [User]
+  user(id: ObjectID!): User
+}
+
+input UserInput {
+  username: String!
+  age: Int!
+  category: String!
+}
+
+type Mutation {
+  updateUser(id: ObjectID!, input: UserInput!): User
+  removeUser(id: ObjectID!): ObjectID
+}
+
+type Subscription {
+  userUpdated: User
+}
